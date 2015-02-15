@@ -24,4 +24,9 @@ class BooksController < ApplicationController
 
   def show
   end
+
+  private
+    def book_params
+      params.require(:book).permit(:title, :category, :author_id, :publisher_id, :isbn, :price, :buy, :format, :exerpt, :pages, :year)
+    end
 end
