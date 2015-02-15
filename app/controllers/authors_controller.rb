@@ -5,6 +5,14 @@ class AuthorsController < ApplicationController
   end
 
   def create
+    @author = Author.new(author_params)
+    if @author.save  
+      flash[:notice] = "Author Created"
+
+      redirect_to authors_path
+    else
+      render 'new'
+    end
   end
 
   def update
@@ -17,9 +25,6 @@ class AuthorsController < ApplicationController
   end
 
   def index
-  end
-
-  def show
   end
 
   private

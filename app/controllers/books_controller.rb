@@ -20,13 +20,17 @@ class BooksController < ApplicationController
   end
 
   def index
+    @books = Book.all
+    @categories = Category.all
   end
 
   def show
+    @book = Book.find(params[:id])
+    @categories = Category.all
   end
 
   private
     def book_params
-      params.require(:book).permit(:title, :category, :author_id, :publisher_id, :isbn, :price, :buy, :format, :exerpt, :pages, :year)
-    end
+    params.require(:book).permit(:title, :category_id, :author_id, :publisher_id, :isbn, :price, :buy, :format, :excerpt, :pages, :year, :coverpath)
+  end
 end
