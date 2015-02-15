@@ -11,6 +11,8 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     @book.save
 
+    flash[:notice] = 'Book Added'
+
     redirect_to books_path
   end
 
